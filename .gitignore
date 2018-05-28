@@ -1,0 +1,8 @@
+bin/*
+i386-elf/*
+include/*
+lib/*
+libexec/*
+share/*
+
+
