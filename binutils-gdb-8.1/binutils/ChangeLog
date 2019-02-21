@@ -1,0 +1,301 @@
+2018-03-13  Nick Clifton  <nickc@redhat.com>
+
+	PR 22957
+	* stabs.c (pop_binincl): Fail if the file index is off the end of
+	the stack.
+
+2018-03-13  Nick Clifton  <nickc@redhat.com>
+
+	PR 22955
+	* stabs.c (parse_number): Add p_end parameter and use it to check
+	the validity of the pp parameter.  Add checks to prevent walking
+	off the end of the string buffer.
+	(parse_stab_string): Likewise.
+	(parse_stab_type): Likewise.
+	(parse_stab_type_number): Likewise.
+	(parse_stab_range_type): Likewise.
+	(parse_stab_sun_builtin_type): Likewise.
+	(parse_stab_sun_floating_type): Likewise.
+	(parse_stab_enum_type): Likewise.
+	(parse_stab_struct_type): Likewise.
+	(parse_stab_baseclasses): Likewise.
+	(parse_stab_struct_fields): Likewise.
+	(parse_stab_cpp_abbrev): Likewise.
+	(parse_stab_one_struct_field): Likewise.
+	(parse_stab_members): Likewise.
+	(parse_stab_tilde_field): Likewise.
+	(parse_stab_array_type): Likewise.
+
+	* parse_stab: Compute the end of the string and then pass it on to
+	individual parser functions.
+
+2018-03-07  Paul Pluzhnikov  <ppluzhnikov@google.com>
+
+	PR binutils/22923
+	* binutils/readelf.c (get_ver_flags): Expand buffer to avoid
+	overflow.
+
+2018-03-07  Alan Modra  <amodra@gmail.com>
+
+	* configure.ac: Add objdump_private_desc_xcoff for rs6000.
+	* configure: Regenerate.
+
+2018-03-05  H.J. Lu  <hongjiu.lu@intel.com>
+
+	PR binutils/22911
+	* objdump.c (is_significant_symbol_name): Return TRUE for all
+	.plt* sections.
+	(find_symbol_for_address): Replace linear search with binary
+	search on dynamic relocations.
+
+2018-03-01  Nick Clifton  <nickc@redhat.com>
+
+	PR 22905
+	* dwarf.c (display_debug_ranges): Check that the offset loaded
+	from the range_entry structure is valid.
+
+2018-03-01  Alan Modra  <amodra@gmail.com>
+
+	* configure.ac (ALL_LINGUAS): Add sr.  Sort.
+	* configure: Regenerate.
+
+2018-02-27  Nick Clifton  <nickc@redhat.com>
+
+	* po/pt.po: New Portuguese translation.
+	* configure.ac (ALL_LINGUAS): Add pt.
+	* configure: Regenerate.
+
+2018-02-27  Nick Clifton  <nickc@redhat.com>
+
+	PR 22875
+	* objcopy.c (copy_object): Check the error status after marking
+	symbols used in relocations.
+	* testsuite/binutils-all/strip-13.s: New test source file.
+	* testsuite/binutils-all/strip-13.s: New test driver file.
+	* testsuite/binutils-all/objcopy.exp: Run the new test.
+
+2018-02-26  Alan Modra  <amodra@gmail.com>
+
+	* testsuite/binutils-all/mips/mips-reginfo-n32.d,
+	* testsuite/binutils-all/mips/mips-reginfo.d: Update.
+
+2018-02-23  Alan Modra  <amodra@gmail.com>
+
+	* testsuite/binutils-all/mips/mips-reginfo-n32.d,
+	* testsuite/binutils-all/mips/mips-reginfo.d: Update.
+
+2018-02-20  Ronald Hoogenboom  <hoogenboom30@zonnet.nl>
+
+	* doc/binutils.texi (objcopy): Add missing closing square
+	parenthesis to listing of objcopy's command line options.
+
+2018-02-19  Matthias Klose  <doko@debian.org>
+
+	* strings.c (long_options): Include-all-whitespace does not take
+        an extra agument.
+
+2018-02-13  Alan Modra  <amodra@gmail.com>
+
+	PR 22836
+	* testsuite/binutils-all/group-7.s,
+	* testsuite/binutils-all/group-7a.d,
+	* testsuite/binutils-all/group-7b.d,
+	* testsuite/binutils-all/group-7c.d: New tests.
+	* testsuite/binutils-all/objcopy.exp: Run them.
+
+2018-02-08  Nick Clifton  <nickc@redhat.com>
+
+	PR 22802
+	* dwarf.c (load_separate_debug_file): Return early if the user is
+	not interested in debug links.
+
+2018-02-06  Nick Clifton  <nickc@redhat.com>
+
+	PR 22793
+	* readelf.c (find_section): Replace assertion with test and return
+	of NULL.
+	(find_section_by_address): Add test of section header table
+	existance.
+	(find_section_by_type): Likewise.
+	(find_section_in_set): Likewise.
+
+2018-02-05  Maciej W. Rozycki  <macro@mips.com>
+
+	* testsuite/binutils-all/mips/mips-reginfo.d: New test.
+	* testsuite/binutils-all/mips/mips-reginfo-n32.d: New test.
+	* testsuite/binutils-all/mips/mips-reginfo.s: New test source.
+	* testsuite/binutils-all/mips/mips.exp: Run the new tests.
+
+2018-02-05  Maciej W. Rozycki  <macro@mips.com>
+
+	* testsuite/config/default.exp (binutils_run): Document
+	`binutils_run_status'.
+	* testsuite/lib/utils-lib.exp (default_binutils_run): Likewise,
+	and set it.
+	(run_dump_test): Add `error', `error_output', `warning' and
+	`warning_output' options.  Update documentation accordingly.
+
+2018-02-02  Andrew Burgess  <andrew.burgess@embecosm.com>
+
+	* dwarf.c (dwarf_regnames_riscv): New register name table.
+	(init_dwarf_regnames_riscv): New function.
+	(init_dwarf_regnames): Add call to initialise RiscV register
+	names.
+	* dwarf.h (init_dwarf_regnames_riscv): Declare.
+	* objdump.c (dump_dwarf): Add call to initialise RiscV register
+	names.
+
+2018-02-01  Alan Modra  <amodra@gmail.com>
+
+	PR 22769
+	* objdump.c (load_specific_debug_section): Check for overflow
+	when adding one to section size for a string section terminator.
+
+2018-01-30  Nick Clifton  <nickc@redhat.com>
+
+	PR 22734
+	* doc/binutils.texi (nm): Update description to point out that
+	zero-initialized values can also be shown as type B, b, S or s
+	since they can be stored in the BSS section.
+
+2018-01-30  Alan Modra  <amodra@gmail.com>
+
+	* objcopy.c (merge_gnu_build_notes): Use (bfd_vma) -1 as
+	"artificially large" end address.
+
+2018-01-28  Nick Clifton  <nickc@redhat.com>
+
+	* README-how-to-make-a-release: Add note about checking gpg key
+	and the results of gnupload.
+
+2018-01-27  Nick Clifton  <nickc@redhat.com>
+
+	* README-how-to-make-a-release: Add details on how to actually
+	make the release.
+
+2018-01-26  Nick Clifton  <nickc@redhat.com>
+
+	* README-how-to-make-a-release: Add more details on updating
+	version numbers.
+
+2018-01-22  Maciej W. Rozycki  <macro@mips.com>
+
+	* doc/binutils.texi (objcopy): Fix a typo in `--rename-section'
+	option description.
+
+2018-01-22  Maciej W. Rozycki  <macro@mips.com>
+
+	* MAINTAINERS: Update my company e-mail address.
+
+2018-01-22  Nick Clifton  <nickc@redhat.com>
+
+	* po/sv.po: Updated Swedish translation.
+
+2018-01-18  Nick Clifton  <nickc@redhat.com>
+
+	* po/bg.po: Updated Bulgarian translation.
+
+2018-01-16  Joel Brobecker  <brobecker@adacore.com>
+
+	* README-how-to-make-a-release: Add reminder to update the
+	branch name in gdbadmin's crontab on sourceware.
+
+2018-01-16  Joel Brobecker  <brobecker@adacore.com>
+
+	* README-how-to-make-a-release: Remove trailing spaces.
+
+2018-01-16  Nick Clifton  <nickc@redhat.com>
+
+	* po/fr.po: Updated French translation.
+
+2018-01-15  Nick Clifton  <nickc@redhat.com>
+
+	* po/uk.po: Updated Ukranian translation.
+
+2018-01-13  Nick Clifton  <nickc@redhat.com>
+
+	* README-how-to-make-a-release: Update notes.
+	* po/binutils.pot: Regenerated.
+
+2018-01-13  Nick Clifton  <nickc@redhat.com>
+
+	* configure: Regenerate.
+
+2018-01-13  Nick Clifton  <nickc@redhat.com>
+
+	2.30 branch created.
+	* NEWS: Add marker for 2.30.
+
+2018-01-12  Nick Clifton  <nickc@redhat.com>
+
+	* README-how-to-make-a-release: Add notes on how to make the
+	branch and prelease snapshot.
+	* BRANCHES: Add binutils-2_29-branch.
+
+2018-01-10  Nick Clifton  <nickc@redhat.com>
+
+	* MAINTAINERS: Note that it is now the configure.ac file and not
+	the configure.in file that needs to be kept in sync with gcc.
+	Add a note about sending patches for libiberty to gcc.
+
+2018-01-03  Nick Clifton  <nickc@redhat.com>
+
+	* objcopy.c (merge_gnu_build_notes): Add cast to maximum address
+	constants.
+
+2018-01-03  Nick Clifton  <nickc@redhat.com>
+
+	* objcopy.c (objcopy_internal_note): New structure.
+	(gap_exists): New function.
+	(is_open_note): New function.
+	(is_func_note): New function.
+	(is_64bit): New function.
+	(merge_gnu_build_notes): Handle v3 notes.  Do not merge
+	if there are relocations against the notes.
+	* readelf.c (get_note_type): Use short names for build attribute
+	notes.
+	(print_symbol_for_build_attribute): Rename to
+	get_symbol_for_build_attribute.  Returns the found symbol rather
+	than printing it.
+	(print_gnu_build_attribute_description): Maintain address ranges
+	for function notes as well as global notes.  Handle v3 notes.
+	(print_gnu_build_attribute_name): Use more space for printing the
+	name in wide mode.
+	* testsuite/binutils-all/note-2-32.s: Use .dc.l instead of .word.
+	Eliminate symbol references in order to remove the need for
+	relocations.
+	* testsuite/binutils-all/note-2-64.s: Likewise.
+	* testsuite/binutils-all/note-3-32.s: Add a size to the note_1
+	symbol.
+	* testsuite/binutils-all/note-3-64.s: Likewise.
+	* testsuite/binutils-all/mips/mips-note-2r-n32.d: Update expected
+	output.
+	* testsuite/binutils-all/mips/mips-note-2r-n64.d: Likewise.
+	* testsuite/binutils-all/mips/mips-note-2r.d: Likewise.
+	* testsuite/binutils-all/note-2-32.d: Likewise.
+	* testsuite/binutils-all/note-2-64.d: Likewise.
+	* testsuite/binutils-all/note-3-32.d: Likewise.
+	* testsuite/binutils-all/note-3-64.d: Likewise.
+	* testsuite/binutils-all/note-4-64.s: New test.  Checks v3 notes.
+	* testsuite/binutils-all/note-4-32.s: New test.
+	* testsuite/binutils-all/note-4-64.d: New test result file.
+	* testsuite/binutils-all/note-4-32.d: New test result file.
+
+2018-01-03  Alan Modra  <amodra@gmail.com>
+
+	Update year range in copyright notice of all files.
+
+For older changes see ChangeLog-2017
+
+Copyright (C) 2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Local Variables:
+mode: change-log
+left-margin: 8
+fill-column: 74
+version-control: never
+End:

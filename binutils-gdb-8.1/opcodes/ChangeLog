@@ -1,0 +1,348 @@
+2018-03-14  Kito Cheng  <kito.cheng@gmail.com>
+
+	* riscv-opc.c (riscv_insn_types): New.
+
+2018-03-13  Nick Clifton  <nickc@redhat.com>
+
+	* po/pt_BR.po: Updated Brazilian Portuguese translation.
+
+2018-03-08  H.J. Lu  <hongjiu.lu@intel.com>
+
+	* i386-opc.tbl: Add Optimize to clr.
+	* i386-tbl.h: Regenerated.
+
+2018-03-08  H.J. Lu  <hongjiu.lu@intel.com>
+
+	* i386-gen.c (opcode_modifiers): Remove OldGcc.
+	* i386-opc.h (OldGcc): Removed.
+	(i386_opcode_modifier): Remove oldgcc.
+	* i386-opc.tbl: Remove fsubp, fsubrp, fdivp and fdivrp
+	instructions for old (<= 2.8.1) versions of gcc.
+	* i386-tbl.h: Regenerated.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.h (EVEXDYN): New.
+	* i386-opc.tbl: Fold various AVX512VL templates.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vexpandpd, vexpandps, vmovapd, vmovaps,
+	vmovdqa32, vmovdqa64, vmovdqu32, vmovdqu64, vmovupd, vmovups,
+	vpexpandd, vpexpandq): Fold AFX512VF templates.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vgf2p8affineinvqb, vgf2p8affineqb, vgf2p8mulb):
+	Fold 128- and 256-bit VEX-encoded templates.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vexpandpd, vexpandps, vmovapd, vmovaps,
+	vmovdqa32, vmovdqa64, vmovdqu32, vmovdqu64, vmovupd, vmovups,
+	vpexpandd, vpexpandq): Fold AVX512F templates.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (llwpcb, slwpcb, lwpval, lwpins): Fold 32- and
+	64-bit templates. Drop Disp<N>.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vfmadd*, vfmsub*, vfnmadd*, vfnmsub*): Fold 128-
+	and 256-bit templates.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (cmpxchg8b): Add NoRex64.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (cmpxchg16b, fisttp, fisttpll, bndmov, mwaitx):
+	Drop NoAVX.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (ldmxcsr, stmxcsr): Add NoAVX.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-gen.c (opcode_modifiers): Delete FloatD.
+	* i386-opc.h (FloatD): Delete.
+	(struct i386_opcode_modifier): Delete floatd.
+	* i386-opc.tbl (fadd, fsub, fsubr, fmul, fdiv, fdivr): Replace
+	FloatD by D.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-dis.c (float_reg): Adjust DC and DE fsub*/fdiv* patterns.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vmovd): Disallow Qword memory operands.
+	* i386-tlb.h: Re-generate.
+
+2018-03-08  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vcvtpd2ps): Fold AVX 128- and 256-bit memory
+	forms.
+	* i386-tlb.h: Re-generate.
+
+2018-03-07  Alan Modra  <amodra@gmail.com>
+
+	* disassemble.c (disassembler): Use bfd_arch_powerpc entry for
+	bfd_arch_rs6000.
+	* disassemble.h (print_insn_rs6000): Delete.
+	* ppc-dis.c (powerpc_init_dialect): Handle rs6000.
+	(disassemble_init_powerpc): Call powerpc_init_dialect for rs6000.
+	(print_insn_rs6000): Delete.
+
+2018-03-03  Alan Modra  <amodra@gmail.com>
+
+	* sysdep.h (opcodes_error_handler): Define.
+	(_bfd_error_handler): Declare.
+	* Makefile.am: Remove stray #.
+	* opc2c.c (main): Remove bogus -l arg handling.  Print "DO NOT
+	EDIT" comment.
+	* aarch64-dis.c, * arc-dis.c, * arm-dis.c, * avr-dis.c,
+	* d30v-dis.c, * h8300-dis.c, * mmix-dis.c, * ppc-dis.c,
+	* riscv-dis.c, * s390-dis.c, * sparc-dis.c, * v850-dis.c: Use
+	opcodes_error_handler to print errors.  Standardize error messages.
+	* msp430-decode.opc, * nios2-dis.c, * rl78-decode.opc: Likewise,
+	and include opintl.h.
+	* nds32-asm.c: Likewise, and include sysdep.h and opintl.h.
+	* i386-gen.c: Standardize error messages.
+	* msp430-decode.c, * rl78-decode.c, rx-decode.c: Regenerate.
+	* Makefile.in: Regenerate.
+	* epiphany-asm.c, * epiphany-desc.c, * epiphany-dis.c,
+	* epiphany-ibld.c, * fr30-asm.c, * fr30-desc.c, * fr30-dis.c,
+	* fr30-ibld.c, * frv-asm.c, * frv-desc.c, * frv-dis.c, * frv-ibld.c,
+	* frv-opc.c, * ip2k-asm.c, * ip2k-desc.c, * ip2k-dis.c, * ip2k-ibld.c,
+	* iq2000-asm.c, * iq2000-desc.c, * iq2000-dis.c, * iq2000-ibld.c,
+	* lm32-asm.c, * lm32-desc.c, * lm32-dis.c, * lm32-ibld.c,
+	* m32c-asm.c, * m32c-desc.c, * m32c-dis.c, * m32c-ibld.c,
+	* m32r-asm.c, * m32r-desc.c, * m32r-dis.c, * m32r-ibld.c,
+	* mep-asm.c, * mep-desc.c, * mep-dis.c, * mep-ibld.c, * mt-asm.c,
+	* mt-desc.c, * mt-dis.c, * mt-ibld.c, * or1k-asm.c, * or1k-desc.c,
+	* or1k-dis.c, * or1k-ibld.c, * xc16x-asm.c, * xc16x-desc.c,
+	* xc16x-dis.c, * xc16x-ibld.c, * xstormy16-asm.c, * xstormy16-desc.c,
+	* xstormy16-dis.c, * xstormy16-ibld.c: Regenerate.
+
+2018-03-01  H.J. Lu  <hongjiu.lu@intel.com>
+
+	* * i386-opc.tbl: Add "Optimize" to AVX256 and AVX512
+	vpsub[bwdq] instructions.
+	* i386-tbl.h: Regenerated.
+
+2018-03-01  Alan Modra  <amodra@gmail.com>
+
+	* configure.ac (ALL_LINGUAS): Sort.
+	* configure: Regenerate.
+
+2018-02-27  Thomas Preud'homme  <thomas.preudhomme@arm.com>
+
+	* arm-dis.c (print_insn_coprocessor): Replace uses of ARM_FEATURE_COPY
+	macro by assignements.
+
+2018-02-27  H.J. Lu  <hongjiu.lu@intel.com>
+
+	PR gas/22871
+	* i386-gen.c (opcode_modifiers): Add Optimize.
+	* i386-opc.h (Optimize): New enum.
+	(i386_opcode_modifier): Add optimize.
+	* i386-opc.tbl: Add "Optimize" to "mov $imm, reg",
+	"sub reg, reg/mem", "test $imm, acc", "test $imm, reg/mem",
+	"and $imm, acc", "and $imm, reg/mem", "xor reg, reg/mem",
+	"movq $imm, reg" and AVX256 and AVX512 versions of vandnps,
+	vandnpd, vpandn, vpandnd, vpandnq, vxorps, vxorpd, vpxor,
+	vpxord and vpxorq.
+	* i386-tbl.h: Regenerated.
+
+2018-02-26  Alan Modra  <amodra@gmail.com>
+
+	* crx-dis.c (getregliststring): Allocate a large enough buffer
+	to silence false positive gcc8 warning.
+
+2018-02-22  Shea Levy <shea@shealevy.com>
+
+	* disassemble.c (ARCH_riscv): Define if ARCH_all.
+
+2018-02-22  H.J. Lu  <hongjiu.lu@intel.com>
+
+	* i386-opc.tbl: Add {rex},
+	* i386-tbl.h: Regenerated.
+
+2018-02-20  Maciej W. Rozycki  <macro@mips.com>
+
+	* mips16-opc.c (decode_mips16_operand) <'M'>: Remove case.
+	(mips16_opcodes): Replace `M' with `m' for "restore".
+
+2018-02-19  Thomas Preud'homme  <thomas.preudhomme@arm.com>
+
+	* arm-dis.c (thumb_opcodes): Fix BXNS mask.
+
+2018-02-13  Maciej W. Rozycki  <macro@mips.com>
+
+	* wasm32-dis.c (print_insn_wasm32): Rename `index' local
+	variable to `function_index'.
+
+2018-02-13  Nick Clifton  <nickc@redhat.com>
+
+	PR 22823
+	* metag-dis.c (print_fmmov): Double buffer size to avoid warning
+	about truncation of printing.
+
+2018-02-12  Henry Wong <henry@stuffedcow.net>
+
+	* mips-opc.c (mips_builtin_opcodes): Correct "sigrie" encoding.
+
+2018-02-05  Nick Clifton  <nickc@redhat.com>
+
+	* po/pt_BR.po: Updated Brazilian Portuguese translation.
+
+2018-01-23  Igor Tsimbalist  <igor.v.tsimbalist@intel.com>
+
+	* i386-dis.c (enum): Add pconfig.
+	* i386-gen.c (cpu_flag_init): Add CPU_PCONFIG_FLAGS.
+	(cpu_flags): Add CpuPCONFIG.
+	* i386-opc.h (enum): Add CpuPCONFIG.
+	(i386_cpu_flags): Add cpupconfig.
+	* i386-opc.tbl: Add PCONFIG instruction.
+	* i386-init.h: Regenerate.
+	* i386-tbl.h: Likewise.
+
+2018-01-23  Igor Tsimbalist  <igor.v.tsimbalist@intel.com>
+
+	* i386-dis.c (enum): Add PREFIX_0F09.
+	* i386-gen.c (cpu_flag_init): Add CPU_WBNOINVD_FLAGS.
+	(cpu_flags): Add CpuWBNOINVD.
+	* i386-opc.h (enum): Add CpuWBNOINVD.
+	(i386_cpu_flags): Add cpuwbnoinvd.
+	* i386-opc.tbl: Add WBNOINVD instruction.
+	* i386-init.h: Regenerate.
+	* i386-tbl.h: Likewise.
+
+2018-01-17  Jim Wilson  <jimw@sifive.com>
+
+	* riscv-opc.c (riscv_opcodes) <addi>: Use z instead of 0.
+
+2018-01-17  Igor Tsimbalist  <igor.v.tsimbalist@intel.com>
+
+	* i386-gen.c (cpu_flag_init): Delete CPU_CET_FLAGS, CpuCET.
+	Add CPU_IBT_FLAGS, CPU_SHSTK_FLAGS, CPY_ANY_IBT_FLAGS,
+	CPU_ANY_SHSTK_FLAGS, CpuIBT, CpuSHSTK.
+	(cpu_flags): Add CpuIBT, CpuSHSTK.
+	* i386-opc.h (enum): Add CpuIBT, CpuSHSTK.
+	(i386_cpu_flags): Add cpuibt, cpushstk.
+	* i386-opc.tbl: Change CpuCET to CpuSHSTK and CpuIBT.
+	* i386-init.h: Regenerate.
+	* i386-tbl.h: Likewise.
+
+2018-01-16  Nick Clifton  <nickc@redhat.com>
+
+	* po/pt_BR.po: Updated Brazilian Portugese translation.
+	* po/de.po: Updated German translation.
+
+2018-01-15  Jim Wilson  <jimw@sifive.com>
+
+	* riscv-opc.c (match_c_nop): New.
+	(riscv_opcodes) <addi>: Handle an addi that compresses to c.nop.
+
+2018-01-15  Nick Clifton  <nickc@redhat.com>
+
+	* po/uk.po: Updated Ukranian translation.
+
+2018-01-13  Nick Clifton  <nickc@redhat.com>
+
+	* po/opcodes.pot: Regenerated.
+
+2018-01-13  Nick Clifton  <nickc@redhat.com>
+
+	* configure: Regenerate.
+
+2018-01-13  Nick Clifton  <nickc@redhat.com>
+
+	2.30 branch created.
+
+2018-01-11  Igor Tsimbalist  <igor.v.tsimbalist@intel.com>
+
+	* i386-opc.tbl: Remove VL variants for 4FMAPS and 4VNNIW insns.
+	* i386-tbl.h: Regenerate.
+
+2018-01-10  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (v4fmaddss, v4fnmaddss): Adjust Disp8MemShift.
+	* i386-tbl.h: Re-generate.
+
+2018-01-10  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-opc.tbl (vpcmpeqb, vpcmpleb, vpcmpltb, vpcmpneqb,
+	vpcmpnleb, vpcmpnltb, vpcmpequb, vpcmpleub, vpcmpltub,
+	vpcmpnequb, vpcmpnleub, vpcmpnltub, vpcmpeqw, vpcmplew,
+	vpcmpltw, vpcmpneqw, vpcmpnlew, vpcmpnltw, vpcmpequw, vpcmpleuw,
+	vpcmpltuw, vpcmpnequw, vpcmpnleuw, vpcmpnltuw): Adjust
+	Disp8MemShift of AVX512VL forms.
+	* i386-tbl.h: Re-generate.
+
+2018-01-09  Jim Wilson  <jimw@sifive.com>
+
+	* riscv-dis.c (maybe_print_address): If base_reg is zero,
+	then the hi_addr value is zero.
+
+2018-01-09  James Greenhalgh  <james.greenhalgh@arm.com>
+
+	* arm-dis.c (arm_opcodes): Add csdb.
+	(thumb32_opcodes): Add csdb.
+
+2018-01-09  James Greenhalgh  <james.greenhalgh@arm.com>
+
+	* aarch64-tbl.h (aarch64_opcode_table): Add "csdb".
+	* aarch64-asm-2.c: Regenerate.
+	* aarch64-dis-2.c: Regenerate.
+	* aarch64-opc-2.c: Regenerate.
+
+2018-01-08  H.J. Lu  <hongjiu.lu@intel.com>
+
+	PR gas/22681
+	* i386-opc.tbl: Properly encode vmovd with Qword memeory operand.
+	Remove AVX512 vmovd with 64-bit operands.
+	* i386-tbl.h: Regenerated.
+
+2018-01-05  Jim Wilson  <jimw@sifive.com>
+
+	* riscv-dis.c (print_insn_args) <'s'>: Call maybe_print_address for a
+	jalr.
+
+2018-01-03  Alan Modra  <amodra@gmail.com>
+
+	Update year range in copyright notice of all files.
+
+2018-01-02  Jan Beulich  <jbeulich@suse.com>
+
+	* i386-gen.c (operand_type_init): Restore OPERAND_TYPE_REGYMM
+	and OPERAND_TYPE_REGZMM entries.
+
+For older changes see ChangeLog-2017
+
+Copyright (C) 2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Local Variables:
+mode: change-log
+left-margin: 8
+fill-column: 74
+version-control: never
+End:
